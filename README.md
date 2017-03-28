@@ -1,4 +1,4 @@
-Clever Logging Collector Dashboard
+Simple Dashboard template
 (ReactJs)
 ================================
 
