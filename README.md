@@ -1,5 +1,5 @@
 Simple Dashboard template
-(ReactJs)
+(ReactJs with Material-UI)
 ================================
 
 Installation / Running
