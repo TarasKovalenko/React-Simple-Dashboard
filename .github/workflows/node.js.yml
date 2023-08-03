@@ -6,10 +6,14 @@ env:
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, dev ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, dev ]
   workflow_dispatch:
+    inputs:
+      tests_run_tag:
+       description: 'Tag to run single test or set, example - "@smoke"'
+       type: string
 
 jobs:
   build:
@@ -18,7 +22,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
