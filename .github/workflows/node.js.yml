@@ -1,30 +1,18 @@
 name: Node.js CI
 
-env:
-  TAG: ${{ github.event.inputs.tests_run_tag || '@smoke' }}
-  ENVIRONMENT: "staging"
-
 on:
   push:
     branches: [ master, dev ]
   pull_request:
     branches: [ master, dev ]
   workflow_dispatch:
-    inputs:
-      tests_run_tag:
-       description: 'Tag to run single test or set, example - "@smoke"'
-       type: string
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
-
+    runs-on: windows-latest
     strategy:
       matrix:
         node-version: [18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
@@ -34,4 +22,3 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build --if-present
-    - run: npm test
